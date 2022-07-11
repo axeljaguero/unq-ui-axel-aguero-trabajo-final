@@ -1,4 +1,10 @@
-import { React, useState, useEffect} from 'react';
+import { React, useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 import './style.css';
 
 const Home = () => {
@@ -57,72 +63,72 @@ const Home = () => {
     }, [humanChoice, computerChoice])
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <h5 className="card-title">Your Choice</h5>
-                            <p className="card-text">
+        <Container>
+            <Row>
+                <Col md="auto">
+                    <Card md="auto">
+                        <Card.Body>
+                            <Card.Title>Your Choice</Card.Title>
+                            <Card.Text>
                                 {humanChoice}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <h5 className="card-title">Computer Choice</h5>
-                            <p className="card-text">
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md="auto">
+                    <Card md="auto">
+                        <Card.Body>
+                            <Card.Title>Computer Choice</Card.Title>
+                            <Card.Text>
                                 {computerChoice}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <h5 className="card-title">Result</h5>
-                            <p className="card-text">
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={6}>
+                    <Card md="auto">
+                        <Card.Body>
+                            <Card.Title>Result</Card.Title>
+                            <Card.Body>
                                 {result}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <h5 className="card-title">Score</h5>
-                            <p className="card-text">
+                            </Card.Body>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={6}>
+                    <Card md="auto">
+                        <Card.Body>
+                            <Card.Title>Score</Card.Title>
+                            <Card.Body>
                                 You: {score}
                                 <br />
                                 Computer: {computerScore}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                    {possibleChoice.map((choice, index) => {
-                        return(
-                            <button key={index} className="btn btn-primary" onClick={humanChoiceHandler} value={choice}>
-                                {choice}
-                            </button>
-                        )
-                    }
-                    )}
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                    <button className="btn btn-primary" onClick={restartGame}>Restart</button>
-                </div>
-            </div>
-        </div>
-
+                            </Card.Body>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={12}>
+                    <ButtonGroup aria-label="Basic example">
+                        {possibleChoice.map((choice, index) => {
+                            return (
+                                <Button key={index} className="btn btn-primary" onClick={humanChoiceHandler} value={choice}>
+                                    {choice}
+                                </Button>
+                            )
+                        })}
+                    </ButtonGroup>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={12}>
+                    <Button className="secondary" onClick={restartGame}>Restart</Button>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
