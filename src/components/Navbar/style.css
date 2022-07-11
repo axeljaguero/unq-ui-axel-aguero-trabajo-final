@@ -18,11 +18,12 @@ body{
 
 .navbar-brand{
     font-size: 40px;
+    font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .navbar ul{
-    padding: 0;
+    padding-top: 0.5rem;
     margin: 1;
     list-style: none;
     display: flex;
@@ -40,6 +41,7 @@ body{
 }
 
 .navbar li.active{
+    border-radius: 3px;
     background-color: rgb(255, 255, 255);
     color: rgb(119, 3, 3);
 }

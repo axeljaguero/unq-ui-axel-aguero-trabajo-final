@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Alert from 'react-bootstrap/Alert';
 import './style.css';
 
 const Home = () => {
@@ -31,8 +32,8 @@ const Home = () => {
     }
 
     const compare = () => {
-        if(humanChoice === 'Rock'){
-            switch(computerChoice){
+        if (humanChoice === 'Rock') {
+            switch (computerChoice) {
                 case 'Rock': setResult('Draw'); break;
                 case 'Paper': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
                 case 'Scissors': setResult('Human wins'); setScore(score + 1); break;
@@ -41,8 +42,8 @@ const Home = () => {
                 default:
             }
         }
-        if(humanChoice === 'Paper'){
-            switch(computerChoice){
+        if (humanChoice === 'Paper') {
+            switch (computerChoice) {
                 case 'Rock': setResult('Human wins'); setScore(score + 1); break;
                 case 'Paper': setResult('Draw'); break;
                 case 'Scissors': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
@@ -51,8 +52,8 @@ const Home = () => {
                 default:
             }
         }
-        if(humanChoice === 'Scissors'){
-            switch(computerChoice){
+        if (humanChoice === 'Scissors') {
+            switch (computerChoice) {
                 case 'Rock': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
                 case 'Paper': setResult('Human wins'); setScore(score + 1); break;
                 case 'Scissors': setResult('Draw'); break;
@@ -61,8 +62,8 @@ const Home = () => {
                 default:
             }
         }
-        if(humanChoice === 'Lizard'){
-            switch(computerChoice){
+        if (humanChoice === 'Lizard') {
+            switch (computerChoice) {
                 case 'Rock': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
                 case 'Paper': setResult('Human wins'); setScore(score + 1); break;
                 case 'Scissors': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
@@ -71,8 +72,8 @@ const Home = () => {
                 default:
             }
         }
-        if(humanChoice === 'Spock'){
-            switch(computerChoice){
+        if (humanChoice === 'Spock') {
+            switch (computerChoice) {
                 case 'Rock': setResult('Human wins'); setScore(score + 1); break;
                 case 'Paper': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
                 case 'Scissors': setResult('Human wins'); setScore(score + 1); break;
@@ -99,8 +100,9 @@ const Home = () => {
 
     return (
         <Container>
+            <br/>
             <Row>
-                <Col md="auto">
+                <Col md={5}>
                     <Card md="auto">
                         <Card.Body>
                             <Card.Title>Your Choice</Card.Title>
@@ -110,7 +112,7 @@ const Home = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col md="auto">
+                <Col md={5}>
                     <Card md="auto">
                         <Card.Body>
                             <Card.Title>Computer Choice</Card.Title>
@@ -121,18 +123,17 @@ const Home = () => {
                     </Card>
                 </Col>
             </Row>
+            <br/>
             <Row>
-                <Col md={6}>
+                <Col md={5}>
                     <Card md="auto">
                         <Card.Body>
                             <Card.Title>Result</Card.Title>
-                            <Card.Body>
-                                {result}
-                            </Card.Body>
+                            <ResultCard result={result} />
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col md={6}>
+                <Col md={5}>
                     <Card md="auto">
                         <Card.Body>
                             <Card.Title>Score</Card.Title>
@@ -145,27 +146,39 @@ const Home = () => {
                     </Card>
                 </Col>
             </Row>
+            <br/>
             <Row>
-                <Col md={12}>
-                    <ButtonGroup aria-label="choices-buttons">
-                        {possibleChoice.map((choice, index) => {
-                            return (
-                                <Button key={index} variant="primary" onClick={humanChoiceHandler} value={choice}>
-                                    {choice}
-                                </Button>
-                            )
-                        })}
-                    </ButtonGroup>
-                </Col>
-            </Row>
-            <br></br>
-            <Row>
-                <Col md={12}>
-                    <Button variant="secondary" onClick={restartGame}>Restart</Button>
+                <Col md={{ span: "auto", offset: 3 }}>
+                    <Card md="auto">
+                        <Card.Body>
+                            <Card.Title>Pick a choice</Card.Title>
+                            <ButtonGroup aria-label="choices-buttons">
+                                {possibleChoice.map((choice, index) => {
+                                    return (
+                                        <Button key={index} variant="primary" onClick={humanChoiceHandler} value={choice}>
+                                            {choice}
+                                        </Button>
+                                    )
+                                })}
+                            </ButtonGroup>
+                            <br/>
+                            <br/>
+                            <Button variant="secondary" onClick={restartGame}>Restart game</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
         </Container>
     )
+}
+
+function ResultCard({ result }) {
+    switch (result) {
+        case 'Draw': return <Alert variant="secondary">{result}</Alert>
+        case 'Human wins': return <Alert variant="success">{result}</Alert>
+        case 'Computer wins': return <Alert variant="danger">{result}</Alert>
+        default: return <Alert variant="info">Make a play</Alert>
+    }
 }
 
 export default Home;
