@@ -7,7 +7,7 @@ body{
 }
 
 .navbar{
-    background-color: darkblue;
+    background-color: rgb(119, 3, 3);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -17,7 +17,7 @@ body{
 }
 
 .navbar-brand{
-    font-size: 2rem;
+    font-size: 40px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -27,6 +27,7 @@ body{
     list-style: none;
     display: flex;
     gap: 1rem;
+    font-size: 20px;
 }
 
 .navbar a{
@@ -38,6 +39,12 @@ body{
     padding: .25rem;
 }
 
+.navbar li.active{
+    background-color: rgb(255, 255, 255);
+    color: rgb(119, 3, 3);
+}
+
 .navbar li:hover{
-    background-color: lightblue;
+    border-radius: 5px;
+    background-color: lightsalmon;
 }
