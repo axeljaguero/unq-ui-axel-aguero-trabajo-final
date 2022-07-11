@@ -31,20 +31,55 @@ const Home = () => {
     }
 
     const compare = () => {
-        if (humanChoice === computerChoice) {
-            setResult('Draw');
-        } else if (
-            (humanChoice === 'Rock' && computerChoice === 'Scissors') ||
-            (humanChoice === 'Paper' && computerChoice === 'Rock') ||
-            (humanChoice === 'Scissors' && computerChoice === 'Paper') ||
-            (humanChoice === 'Lizard' && computerChoice === 'Paper') ||
-            (humanChoice === 'Spock' && computerChoice === 'Rock')
-        ) {
-            setResult('You win');
-            setScore(score + 1);
-        } else {
-            setResult('You lose');
-            setComputerScore(computerScore + 1);
+        if(humanChoice === 'Rock'){
+            switch(computerChoice){
+                case 'Rock': setResult('Draw'); break;
+                case 'Paper': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Scissors': setResult('Human wins'); setScore(score + 1); break;
+                case 'Lizard': setResult('Human wins'); setScore(score + 1); break;
+                case 'Spock': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                default:
+            }
+        }
+        if(humanChoice === 'Paper'){
+            switch(computerChoice){
+                case 'Rock': setResult('Human wins'); setScore(score + 1); break;
+                case 'Paper': setResult('Draw'); break;
+                case 'Scissors': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Lizard': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Spock': setResult('Human wins'); setScore(score + 1); break;
+                default:
+            }
+        }
+        if(humanChoice === 'Scissors'){
+            switch(computerChoice){
+                case 'Rock': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Paper': setResult('Human wins'); setScore(score + 1); break;
+                case 'Scissors': setResult('Draw'); break;
+                case 'Lizard': setResult('Human wins'); setScore(score + 1); break;
+                case 'Spock': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                default:
+            }
+        }
+        if(humanChoice === 'Lizard'){
+            switch(computerChoice){
+                case 'Rock': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Paper': setResult('Human wins'); setScore(score + 1); break;
+                case 'Scissors': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Lizard': setResult('Draw'); break;
+                case 'Spock': setResult('Human wins'); setScore(score + 1); break;
+                default:
+            }
+        }
+        if(humanChoice === 'Spock'){
+            switch(computerChoice){
+                case 'Rock': setResult('Human wins'); setScore(score + 1); break;
+                case 'Paper': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Scissors': setResult('Human wins'); setScore(score + 1); break;
+                case 'Lizard': setResult('Computer wins'); setComputerScore(computerScore + 1); break;
+                case 'Spock': setResult('Draw'); break;
+                default:
+            }
         }
     }
 
