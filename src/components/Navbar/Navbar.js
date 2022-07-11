@@ -1,23 +1,26 @@
 import './style.css';
-import {Link, useMatch, useResolvedPath} from 'react-router-dom';
+import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import Rules from './Offcanvas/Rules';
+import Contact from './Offcanvas/Contact'
 
-export default function Navbar(){
+export default function Navbar() {
+
     return (
         <nav className='navbar'>
             <Link to="/" className='navbar-brand'>
                 Rock-Paper-Scissors-Lizard-Spock
             </Link>
             <ul>
-                <NavbarRedirection to="/rules">Rules</NavbarRedirection>
-                <NavbarRedirection to="/contact">Contact</NavbarRedirection>
+                <Rules/>
+                <Contact/>
             </ul>
         </nav>
     )
 }
 
-function NavbarRedirection({to, children, ...props}){
+function NavbarRedirection({ to, children, ...props }) {
     const resolvePath = useResolvedPath(to);
-    const isActive = useMatch({path: resolvePath.pathname, end: true});
+    const isActive = useMatch({ path: resolvePath.pathname, end: true });
     return (
         <li className={isActive ? "active" : ""}>
             <Link to={to} {...props}>
