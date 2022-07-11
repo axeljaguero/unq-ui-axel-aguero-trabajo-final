@@ -147,10 +147,10 @@ const Home = () => {
             </Row>
             <Row>
                 <Col md={12}>
-                    <ButtonGroup aria-label="Basic example">
+                    <ButtonGroup aria-label="choices-buttons">
                         {possibleChoice.map((choice, index) => {
                             return (
-                                <Button key={index} className="btn btn-primary" onClick={humanChoiceHandler} value={choice}>
+                                <Button key={index} variant="primary" onClick={humanChoiceHandler} value={choice}>
                                     {choice}
                                 </Button>
                             )
@@ -158,9 +158,10 @@ const Home = () => {
                     </ButtonGroup>
                 </Col>
             </Row>
+            <br></br>
             <Row>
                 <Col md={12}>
-                    <Button className="secondary" onClick={restartGame}>Restart</Button>
+                    <Button variant="secondary" onClick={restartGame}>Restart</Button>
                 </Col>
             </Row>
         </Container>
