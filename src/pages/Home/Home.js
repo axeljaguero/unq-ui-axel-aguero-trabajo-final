@@ -43,7 +43,6 @@ const Home = () => {
     }
 
     const humanChoiceHandler = (event) => {
-        console.log(event)
         setHumanChoice(event);
         computerChoiceHandler();
     }
@@ -185,6 +184,9 @@ const Home = () => {
                             )
                         })}
                     </CardGroup>
+                    <Card>
+                        <Button variant="secondary" onClick={() => restartGame()}>Restart game</Button>
+                    </Card>
                 </Col>
             </Row>
         </Container>
