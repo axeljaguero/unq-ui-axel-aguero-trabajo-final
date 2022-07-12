@@ -1,10 +1,10 @@
 import { React, useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 import Alert from 'react-bootstrap/Alert';
 
 const Home = () => {
@@ -14,15 +14,37 @@ const Home = () => {
     const [result, setResult] = useState(null);
     const [score, setScore] = useState(0);
     const [computerScore, setComputerScore] = useState(0);
-    const possibleChoice = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
+    const possibleChoice = [
+        {
+            name: 'Rock',
+            image: 'rock.png',
+        },
+        {
+            name: 'Paper',
+            image: 'paper.png',
+        },
+        {
+            name: 'Scissors',
+            image: 'scissors.png',
+        },
+        {
+            name: 'Lizard',
+            image: 'lizard.png',
+        },
+        {
+            name: 'Spock',
+            image: 'spock.png',
+        }
+    ];
 
     const randomChoice = () => {
         const randomNumber = Math.floor(Math.random() * 5);
-        return possibleChoice[randomNumber];
+        return possibleChoice[randomNumber].name;
     }
 
     const humanChoiceHandler = (event) => {
-        setHumanChoice(event.target.value);
+        console.log(event)
+        setHumanChoice(event);
         computerChoiceHandler();
     }
 
@@ -99,7 +121,7 @@ const Home = () => {
 
     return (
         <Container>
-            <br/>
+            <br />
             <Row>
                 <Col md={5}>
                     <Card md="auto">
@@ -122,7 +144,7 @@ const Home = () => {
                     </Card>
                 </Col>
             </Row>
-            <br/>
+            <br />
             <Row>
                 <Col md={5}>
                     <Card md="auto">
@@ -145,26 +167,24 @@ const Home = () => {
                     </Card>
                 </Col>
             </Row>
-            <br/>
+            <br />
             <Row>
-                <Col md={{ span: "auto", offset: 3 }}>
-                    <Card md="auto">
-                        <Card.Body>
-                            <Card.Title>Pick a choice</Card.Title>
-                            <ButtonGroup aria-label="choices-buttons">
-                                {possibleChoice.map((choice, index) => {
-                                    return (
-                                        <Button key={index} variant="primary" onClick={humanChoiceHandler} value={choice}>
-                                            {choice}
-                                        </Button>
-                                    )
-                                })}
-                            </ButtonGroup>
-                            <br/>
-                            <br/>
-                            <Button variant="secondary" onClick={restartGame}>Restart game</Button>
-                        </Card.Body>
+                <Col md={10}>
+                    <Card>
+                        <Card.Title align="center">Pick an option</Card.Title>
                     </Card>
+                    <CardGroup>
+                        {possibleChoice.map((choice, index) => {
+                            return (
+                                <Card key={choice.name+"card"}>
+                                    <Card.Img variant="top" src={choice.image} />
+                                    <Card.Body align="center">
+                                        <Button variant="primary" onClick={() => humanChoiceHandler(choice.name)}>{choice.name}</Button>
+                                    </Card.Body>
+                                </Card>
+                            )
+                        })}
+                    </CardGroup>
                 </Col>
             </Row>
         </Container>
